@@ -11,7 +11,6 @@ done < /tmp/ip-list.txt
 # google IPs
 wget -qO - https://www.gstatic.com/ipranges/goog.json |grep ipv4Prefix|awk '{print $2}' |sed 's/"//g' > /tmp/google.txt
 while read line; do
-  # echo $line
   ip r a $line dev $TUN
 done < /tmp/google.txt
 date > /tmp/$TUN-up.txt
