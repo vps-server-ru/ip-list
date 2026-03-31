@@ -4,7 +4,7 @@ TUN=tun0
 # MAX.RU -> blackhole
 ip route add blackhole 155.212.204.0/24
 # ip-list
-wget -qO - http://openwrt.ivtrans.ru/ip-list.txt > /tmp/ip-list.txt
+wget -qO - http://openwrt.ivtrans.ru/ip-list.txt |grep -vE '(^$|^#|^;)' > /tmp/ip-list.txt
 while read line; do
   ip r a $line dev $TUN
 done < /tmp/ip-list.txt
