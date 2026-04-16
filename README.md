@@ -18,4 +18,6 @@ chmod +x /etc/openvpn/up.sh
 
 <code bash>
 sed -nr '/([0-9]{1,3}\.){3}[0-9]{1,3}/p' from.txt | uniq | sort -h > 2.txt
+# Это вернее
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\/[0-9]\{1,2\}' 1.txt |  uniq | sort -h > 2.txt
 </code>
